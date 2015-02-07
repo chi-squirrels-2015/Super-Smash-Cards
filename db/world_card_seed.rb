@@ -1,4 +1,5 @@
 require 'yaml'
+
 COUNTRIES = YAML.load_file('db/countries.yml')
 
 module CountryCapitals
@@ -22,7 +23,7 @@ module CountryCapitals
         question: country['name']['common'],
         answer: country['capital']
         }
-      capitals << h unless country["region"] == region_name
+      capitals << h if country["region"] == region_name && h[:answer] != ""
     end
     return capitals
   end
@@ -35,7 +36,7 @@ module CountryCapitals
         question: country['name']['common'],
         answer: country['capital']
         }
-      capitals << h unless country["subregion"] == region_name
+      capitals << h if country["subregion"] == region_name && h[:answer] != ""
     end
     return capitals
   end
