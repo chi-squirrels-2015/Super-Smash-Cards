@@ -27,7 +27,7 @@ post "/:username/games/:game_id" do
   @deck = @game.deck
   @card = @game.current_card
   if params[:answer] == @card.answer
-    if @deck.cards[@game.current_card.id + 1]
+    if @deck.cards[@game.current_card.id]
       @game.deck_position += 1
       @game.cards_completed += 1
       @game.save
