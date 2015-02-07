@@ -1,5 +1,6 @@
 get "/decks/:deck_title/cards" do
-  "show all the cards in decks"
+  @deck = Deck.find_by(title: params[:deck_title])
+  erb :"cards/show_cards"
 end
 
 get "/decks/:deck_title/cards/:id" do

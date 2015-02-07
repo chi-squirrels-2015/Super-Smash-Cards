@@ -16,7 +16,9 @@ Card.create!(question: "Who runs the world?", answer: "Squirrels")
 
 deck.save
 
-Game.create!(user_id: 1, deck_id: 1) # This needs to be implemented in the controllers/views
+ # This needs to be implemented in the controllers/views
+Game.create!(user_id: 1, deck_id: 1)
+Game.create!(user_id: 1, deck_id: 2)
 
 # makes deck of world capitals
 d = Deck.create!(title: "Capitals of the World")
