@@ -20,7 +20,7 @@ post "/decks/:deck_title/cards/:id/answer" do
   @deck = Deck.find_by(title: params[:deck_title])
   @card = Card.find(params[:id])
   if params[:answer] == @card.answer
-    if Card.find(params[:id].to_i + 1) # throws error when finished with deck
+    if Card.exists?(params[:id].to_i + 1)
       redirect "/decks/#{@deck.title}/cards/#{@card.id.to_i + 1}"
     else
       redirect "/decks/congratulations"
