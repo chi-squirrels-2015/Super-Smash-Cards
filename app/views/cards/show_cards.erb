@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Questions for the deck: <%= @deck.title %></h1>
 
-  <a href="/:username/games/:game_id">Continue Game</a>
+<!--   Need to find a way to change game_id to the Id of the desired game. -->
+  <a href="/<%= @user.username %>/games/:game_id">Continue Game</a>
   <br><br>
   <form action="/cards/show_cards" method="POST">
     <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
