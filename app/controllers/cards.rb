@@ -1,4 +1,5 @@
 get "/decks/:deck_title/cards" do
+  puts params[:user_id]
   @deck = Deck.find_by(title: params[:deck_title])
   erb :"cards/show_cards"
 end

@@ -1,6 +1,7 @@
-# get "/games/new" do
-#   erb :"games/new"
-# end
+get "/games/new" do
+
+  erb :"games/new"
+end
 
 # post "/:username/games" do
 #   "gets info from the decks/index.erb to find out if the game has already been made or needs to be made"

@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Questions for the deck: <%= @deck.title %></h1>
+
+  <a href="/:username/games/:game_id">Continue Game</a>
+  <br><br>
+  <a href="/games/new">Start New Game</a>
+
+  <ul>
+    <% @deck.cards.each do |card| %>
+      <li><%= card.question %></li>
+    <% end %>
+  </ul>
+
+</div>
