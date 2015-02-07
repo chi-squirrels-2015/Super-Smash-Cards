@@ -1,9 +1,8 @@
 class Game < ActiveRecord::Base
-  # Remember to create a migration!
   belongs_to :user
   belongs_to :deck
-  has_many :cards, through :deck
+  has_many :cards, through: :deck
   def current_card
-    Game.cards[:deck_position]
+    self.deck.cards[self.deck_position]
   end
 end

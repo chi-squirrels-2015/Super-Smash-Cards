@@ -1,12 +1,13 @@
 class CreateGames < ActiveRecord::Migration
   def change
-    create_tables :games do |t|
-      t.integer :deck_position
+    create_table :games do |t|
+      t.integer :deck_position, default: 0
       t.integer :user_id
       t.integer :deck_id
-      t.integer :card_skipped
-      t.integer :card_completed
+      t.integer :cards_skipped
+      t.integer :cards_completed
 
       t.timestamps # start_times and end_times
+    end
   end
 end
