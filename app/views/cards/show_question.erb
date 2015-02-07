@@ -9,6 +9,9 @@
     <input type="submit">
   </form>
 
+  <p><%=   @game.deck_position %></p>
+
+
   <a href="/<%= @game.user.username %>/games/<%= @game.id %>/answer"><input type="submit" value="Flip"></a>
   <a href="/<%= @game.user.username %>/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
 </div>
