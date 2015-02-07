@@ -1,3 +1,7 @@
+User.create(username: "Kyoon", password: "1234")
+User.create(username: "Jmandal", password: "abcd")
+User.create(username: "Bsheridan", password: "wxyz")
+
 require 'yaml'
 
 countries_yaml = "- { name: { common: Aruba, official: Aruba, native: { nld: { official: Aruba, common: Aruba }, pap: { official: Aruba, common: Aruba } } }, tld: [.aw], cca2: AW, ccn3: '533', cca3: ABW, currency: [AWG], callingCode: ['297'], capital: Oranjestad, altSpellings: [AW], relevance: '0.5', region: Americas, subregion: Caribbean, languages: { nld: Dutch, pap: Papiamento }, translations: { deu: { official: Aruba, common: Aruba }, fra: { official: Aruba, common: Aruba }, hrv: { official: Aruba, common: Aruba }, ita: { official: Aruba, common: Aruba }, jpn: { official: アルバ, common: アルバ }, nld: { official: Aruba, common: Aruba }, por: { official: Aruba, common: Aruba }, rus: { official: Аруба, common: Аруба }, spa: { official: Aruba, common: Aruba } }, latlng: [12.5, -69.96666666], demonym: Aruban, landlocked: false, borders: {  }, area: 180 }
@@ -264,9 +268,9 @@ countries.each do |country|
     world_capitals << h unless h[:answer] == ""
 end
 
-puts world_capitals.length
+puts world_capitals
 
-d = Deck.new(name: "Capitals of the World")
-d.cards = countries.map{|country| Card.create(country)}
+d = Deck.create!(title: "Capitals of the World")
+d.cards = world_capitals.map{|country| Card.create!(country)}
 
 

@@ -1,0 +1,8 @@
+<div class="container">
+  <h1><%="WRANG" if @wrong %></h1>
+  <h2><%= @card.question %></h2>
+  <form action="/decks/<%= @deck.title %>/cards/<%= @card.id %>/answer" method="POST">
+    <input type="text" name="answer" placeholder="Your Answer">
+    <input type="submit">
+  </form>
+</div>

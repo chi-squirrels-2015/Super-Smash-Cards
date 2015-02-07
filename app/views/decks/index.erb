@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Choose Your Destiny</h1>
+
+  <% @decks.each do |deck| %>
+    <p> <a href="/decks/<%= deck.title %>/cards"><%= deck.title %></a></p>
+  <% end %>
+
+</div>
