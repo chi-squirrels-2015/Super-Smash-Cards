@@ -1,7 +1,8 @@
 <div class="container">
-  <h1><%="WRANG" if @wrong %></h1>
+  <h1><%="OH SHIGGITY SNAP, UR WRONG" if @wrong %></h1>
   <h2><%= @card.question %></h2>
   <h2><%= @card.answer %></h2>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>"><input type="submit" value="Flip"></a>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>/skip"><input type="submit" value="Skip"></a>
+
+  <a href="/<%= @game.user.username %>/games/<%= @game.id %>"><input type="submit" value="Flip"></a>
+  <a href="/<%= @game.user.username %>/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
 </div>

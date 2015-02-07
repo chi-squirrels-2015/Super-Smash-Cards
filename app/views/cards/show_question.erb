@@ -1,10 +1,14 @@
 <div class="container">
-  <h1><%="WRANG" if @wrong %></h1>
+  <h1><%="OH SHIGGITY SNAP, UR WRONG" if @wrong %></h1>
+  <p>Cards Completed: <%= @game.cards_completed %></p>
+  <p>Cards Skipped: <%= @game.cards_skipped %></p>
   <h2><%= @card.question %></h2>
-  <form action="/decks/<%= @deck.title %>/cards/<%= @deck_position %>/answer" method="POST">
+
+  <form action="/<%= @game.user.username %>/games/<%= @game.id %>" method="POST">
     <input type="text" name="answer" placeholder="Your Answer">
     <input type="submit">
   </form>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>/answer"><input type="submit" value="Flip"></a>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>/skip"><input type="submit" value="Skip"></a>
+
+  <a href="/<%= @game.user.username %>/games/<%= @game.id %>/answer"><input type="submit" value="Flip"></a>
+  <a href="/<%= @game.user.username %>/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
 </div>
