@@ -1,3 +1,4 @@
+require_relative 'world_card_seed'
 
 User.create(username: "Kyoon", password: "1234")
 User.create(username: "Jmandal", password: "abcd")
@@ -14,3 +15,8 @@ Card.create(question: "Who runs the world?", answer: "Squirrels")
 ]
 
 deck.save
+
+# makes deck of world capitals
+d = Deck.create!(title: "Capitals of the World")
+d.cards = CountryCapitals::world_capitals.map{|country| Card.create!(country)}
+d.save
