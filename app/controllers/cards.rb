@@ -4,7 +4,8 @@ end
 
 get "/decks/:deck_title/cards/:id" do
   @deck = Deck.find_by(title: params[:deck_title])
-  @card = Card.find(params[:id])
+  @card = @deck.cards[params[:id].to_i]
+  @deck_position = params[:id].to_i
   erb :"cards/show_question"
 end
 
@@ -18,16 +19,18 @@ end
 
 get "/decks/:deck_title/cards/:id/answer" do
   @deck = Deck.find_by(title: params[:deck_title])
-  @card = Card.find(params[:id])
+  @card = @deck.cards[params[:id].to_i]
+  @deck_position = params[:id].to_i
   erb :"cards/show_answer"
 end
 
 post "/decks/:deck_title/cards/:id/answer" do
   @deck = Deck.find_by(title: params[:deck_title])
-  @card = Card.find(params[:id])
+  @card = @deck.cards[params[:id].to_i]
+  @deck_position = params[:id].to_i
   if params[:answer] == @card.answer
-    if Card.exists?(params[:id].to_i + 1)
-      redirect "/decks/#{@deck.title}/cards/#{@card.id.to_i + 1}"
+    if @deck.cards[params[:id].to_i+1]
+      redirect "/decks/#{@deck.title}/cards/#{params[:id].to_i+1}"
     else
       redirect "/decks/congratulations"
     end
@@ -39,10 +42,9 @@ end
 
 get "/decks/:deck_title/cards/:id/skip" do
   @deck = Deck.find_by(title: params[:deck_title])
-  @card = Card.find(params[:id])
-  if Card.exists?(params[:id].to_i + 1)
-      redirect "/decks/#{@deck.title}/cards/#{@card.id.to_i + 1}"
+  if @deck.cards[params[:id].to_i+1]
+    redirect "/decks/#{@deck.title}/cards/#{params[:id].to_i+1}"
   else
-      redirect "/decks/congratulations"
+    redirect "/decks/congratulations"
   end
 end

@@ -2,6 +2,6 @@
   <h1><%="WRANG" if @wrong %></h1>
   <h2><%= @card.question %></h2>
   <h2><%= @card.answer %></h2>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @card.id %>"><input type="submit" value="Flip"></a>
-  <a href="/decks/<%= @deck.title %>/cards/<%= @card.id %>/skip"><input type="submit" value="Skip"></a>
+  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>"><input type="submit" value="Flip"></a>
+  <a href="/decks/<%= @deck.title %>/cards/<%= @deck_position %>/skip"><input type="submit" value="Skip"></a>
 </div>
