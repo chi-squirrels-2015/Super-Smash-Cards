@@ -5,7 +5,7 @@ end
 get "/decks/:deck_title/cards/:id" do
   @deck = Deck.find_by(title: params[:deck_title])
   @card = Card.find(params[:id])
-  erb :"cards/index"
+  erb :"cards/show_question"
 end
 
 # get "/deck/:deck_title/game" do
@@ -15,6 +15,12 @@ end
 
 #   erb :game
 # end
+
+get "/decks/:deck_title/cards/:id/answer" do
+  @deck = Deck.find_by(title: params[:deck_title])
+  @card = Card.find(params[:id])
+  erb :"cards/show_answer"
+end
 
 post "/decks/:deck_title/cards/:id/answer" do
   @deck = Deck.find_by(title: params[:deck_title])
@@ -27,6 +33,16 @@ post "/decks/:deck_title/cards/:id/answer" do
     end
   else
     @wrong = true
-    erb :"cards/index"
+    erb :"cards/show_question"
+  end
+end
+
+get "/decks/:deck_title/cards/:id/skip" do
+  @deck = Deck.find_by(title: params[:deck_title])
+  @card = Card.find(params[:id])
+  if Card.exists?(params[:id].to_i + 1)
+      redirect "/decks/#{@deck.title}/cards/#{@card.id.to_i + 1}"
+  else
+      redirect "/decks/congratulations"
   end
 end

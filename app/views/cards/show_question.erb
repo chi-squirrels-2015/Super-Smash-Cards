@@ -5,4 +5,6 @@
     <input type="text" name="answer" placeholder="Your Answer">
     <input type="submit">
   </form>
+  <a href="/decks/<%= @deck.title %>/cards/<%= @card.id %>/answer"><input type="submit" value="Flip"></a>
+  <a href="/decks/<%= @deck.title %>/cards/<%= @card.id%>/skip"><input type="submit" value="Skip"></a>
 </div>
