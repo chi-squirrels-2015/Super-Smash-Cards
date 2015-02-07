@@ -1,10 +1,16 @@
-get "/" do
+get "/users" do
+  session.clear
   erb :index
 end
 
 post "/users" do
-  "get the information form the login page and then check if that user is in the database and then forward them to the decks page"
-  redirect '/decks'
+  @user = User.authenticate(params[:username], params[:password])
+  if @user
+    session[:user_id] = @user.id
+    redirect '/decks'
+  else
+    erb :index
+  end
 end
 
 get "/users/signup" do
