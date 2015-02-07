@@ -3,7 +3,11 @@
 
   <a href="/:username/games/:game_id">Continue Game</a>
   <br><br>
-  <a href="/games/new">Start New Game</a>
+  <form action="/cards/show_cards" method="POST">
+    <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+    <input type="hidden" name="deck_title" value="<%= @deck.title %>">
+    <input type="submit" value="Start New Game">
+  </form>
 
   <ul>
     <% @deck.cards.each do |card| %>

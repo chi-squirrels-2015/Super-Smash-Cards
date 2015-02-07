@@ -1,6 +1,13 @@
-get "/games/new" do
-
-  erb :"games/new"
+post "/cards/show_cards" do
+  if session[:user_id]
+    user = User.find(session[:user_id])
+    deck = Deck.find_by(title: params[:deck_title])
+    new_game = Game.create!(user_id: user.id, deck_id: deck.id)
+    @game = Game.find(new_game.id)
+    @deck = @game.deck
+    @card = @game.current_card
+    erb :"cards/show_question"
+  end
 end
 
 # post "/:username/games" do
