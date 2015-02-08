@@ -1,15 +1,7 @@
 <div class="container">
   <h1>Questions for the deck: <%= @deck.title %></h1>
 
-<!-- Continue Game -->
-  <p><%= "No games to continue. Start a new game!" if @no_continue %></p>
-  <form action="/games/continue/<%= @deck.title %>" method="POST">
-    <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
-    <input type="hidden" name="deck_title" value="<%= @deck.title %>">
-    <input type="submit" value="Continue Game">
-  </form>
 
-  <br>
 
 <!-- Start New Game -->
   <form action="/games/new_game" method="POST">

@@ -10,7 +10,7 @@ post "/games/new_game" do
   end
 end
 
-post "/games/continue/:deck_title" do
+post "/games/continue" do
   @deck = Deck.find_by(title: params[:deck_title])
   if session[:user_id]
     # Checks if there is a game that can be continued from the user that is logged in, otherwise show them the same page that shows all cards of deck.
