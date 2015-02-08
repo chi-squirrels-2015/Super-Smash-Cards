@@ -1,14 +1,17 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="card_container">
+  <p>Welcome, <%= User.find(session[:user_id]).username %>. <button type="submit"><a href="/users">Log Out</a></button></p>
+  <hr>
   <h1><%="OH SHIGGITY SNAP, UR WRONG" if @wrong %></h1>
-  <p>Cards Completed: <%= @game.cards_completed %></p>
-  <p>Cards Skipped: <%= @game.cards_skipped %></p>
+  <p>Cards Completed: <%= @game.cards_completed %> ---- Cards Skipped: <%= @game.cards_skipped %></p>
   <h2><%= @card.question %></h2>
 
   <form action="/games/<%= @game.id %>" method="POST">
     <input type="text" name="answer" placeholder="Your Answer">
     <input type="submit">
   </form>
-
+  <br>
   <a href="/games/<%= @game.id %>/answer"><input type="submit" value="Flip"></a>
   <a href="/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
   <br><hr>

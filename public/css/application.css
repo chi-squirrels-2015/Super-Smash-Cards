@@ -1,9 +1,191 @@
-.container {
+* {
+  font-family: 'Cabin', sans-serif;
+  text-decoration: none;
+}
+
+button a {
+  color: black;
+}
+
+body {
+  background-image: url(http://img1.wikia.nocookie.net/__cb20130729140735/smashbroslawlorigins/images/9/96/Super_Smash_Bros_Lawl_Poster_Background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+}
+
+th {
+  text-align: left;
+}
+
+/* For Login and Signup Page */
+
+.form_container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border: 1px solid black;
+  text-align: center;
+  background-image: url(http://wallpaperbook.net/wp-content/uploads/2014/10/Abstract_Background_Wallpaper_011.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
 }
-th {
-  text-align: left;
+
+.form_container button a {
+  color: black;
+}
+
+.form_container form input {
+  color: black;
+}
+
+.form_container h1 {
+  display: inline-block;
+}
+
+.form_container img {
+  max-width: 10%;
+  display: inline-block;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+/* For Decks page */
+
+.decks_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-image: url(http://wallpaperbook.net/wp-content/uploads/2014/10/Abstract_Background_Wallpaper_011.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.decks_container h1 {
+  text-align: center;
+}
+
+.decks_container button a {
+  color: black;
+}
+
+.decks_container a {
+  color: white;
+}
+
+.decks_container a:hover {
+  color: blue;
+  text-shadow: 2px 2px 5px yellow;
+}
+
+/* For showing all cards page */
+
+.all_cards_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-image: url(http://wallpaperbook.net/wp-content/uploads/2014/10/Abstract_Background_Wallpaper_011.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.all_cards_container button a {
+  color: black;
+}
+
+.all_cards_container form input {
+  color: black;
+}
+
+/* For showing all the continued games */
+
+.continue_games_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-image: url(http://wallpaperbook.net/wp-content/uploads/2014/10/Abstract_Background_Wallpaper_011.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.continue_games_container button a {
+  color: black;
+}
+
+.continue_games_container a {
+  color: #33CCFF;
+}
+
+.continue_games_container a:hover {
+  color: blue;
+  text-shadow: 2px 2px 5px yellow;
+}
+
+/* For showing the front of one card */
+
+.card_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-image: url(http://www.clker.com/cliparts/g/y/g/4/r/h/tan-index-card.svg);
+}
+
+.card_container h2 {
+  text-shadow: 2px 2px 5px white;
+}
+
+.card_container p {
+  text-shadow: 2px 2px 5px white;
+}
+
+/* For showing the back of one card */
+
+.back_card_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+/* For showing the congrats page */
+
+.congrats_container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-image: url(https://0.s3.envato.com/files/12029200/10_PartyGlitters.jpg);
+    background-repeat: no-repeat;
+  background-position: center;
+  background-position: fixed;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
+}
+
+.celebration {
+  text-align: center;
 }

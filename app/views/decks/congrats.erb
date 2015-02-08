@@ -1,12 +1,18 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="congrats_container">
   <h1>Congratulations, <%= @user.username %>!</h1>
   <h2>You've completed <%= @game.deck.title %></h2>
 
   <h3>Stats for game <%= @game.id %>:</h3>
     <p>Cards Completed: <%= @game.cards_completed %></p>
     <p>Cards Skipped: <%= @game.cards_skipped %></p>
-    <p>Cards total in deck: <%= @deck.cards.length %></p>
+    <p>Total cards in deck: <%= @deck.cards.length %></p>
 
   <button type="submit"><a href="/decks">Back To Decks</a></button>
   <button type="submit"><a href="/users">Log Out</a></button>
+</div>
+
+<div class="celebration">
+  <img src="http://media.giphy.com/media/xeXEpUVvAxCV2/giphy.gif"/>
 </div>
