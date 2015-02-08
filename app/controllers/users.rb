@@ -1,3 +1,7 @@
+get "/" do
+  redirect "/users"
+end
+
 get "/users" do
   session.clear
   erb :index
