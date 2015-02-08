@@ -1,6 +1,13 @@
-get "/games/new" do
-
-  erb :"games/new"
+post "/cards/show_cards" do
+  if session[:user_id]
+    user = User.find(session[:user_id])
+    deck = Deck.find_by(title: params[:deck_title])
+    new_game = Game.create!(user_id: user.id, deck_id: deck.id)
+    @game = Game.find(new_game.id)
+    @deck = @game.deck
+    @card = @game.current_card
+    erb :"cards/show_question"
+  end
 end
 
 # post "/:username/games" do
@@ -8,21 +15,32 @@ end
 #   Game.create(params[:game])
 # end
 
-get "/:username/games/:game_id" do
+get "/games/:game_id/congratulations" do
+  if session[:user_id]
+    @user = User.find(session[:user_id])
+    @game = Game.find(params[:game_id])
+    erb :"decks/congrats"
+  else
+    session.clear
+    redirect "/users"
+  end
+end
+
+get "/games/:game_id" do
   @game = Game.find(params[:game_id])
   @deck = @game.deck
   @card = @game.current_card
   erb :"cards/show_question"
 end
 
-get "/:username/games/:game_id/answer" do
+get "/games/:game_id/answer" do
   @game = Game.find(params[:game_id])
   @deck = @game.deck
   @card = @game.current_card
   erb :"cards/show_answer"
 end
 
-post "/:username/games/:game_id" do
+post "/games/:game_id" do
   @game = Game.find(params[:game_id])
   @deck = @game.deck
   @card = @game.current_card
@@ -31,14 +49,14 @@ post "/:username/games/:game_id" do
       @game.deck_position += 1
       @game.cards_completed += 1
       @game.save
-      redirect "/#{@game.user.username}/games/#{@game.id}"
+      redirect "/games/#{@game.id}"
     else
       @game.deck_position = 0
       @game.cards_completed = 0
       @game.cards_skipped = 0
        # Testing purposes, but need to implement somehow. Remove this line and after until the redirect.
       @game.save
-      redirect "/decks/congratulations" # Need to implement this page
+      redirect "/games/#{@game.id}/congratulations" #Why are we redirecting to congrats here?
     end
   else
     @wrong = true
@@ -46,16 +64,16 @@ post "/:username/games/:game_id" do
   end
 end
 
-get "/:username/games/:game_id/skip" do
+get "/games/:game_id/skip" do
   @game = Game.find(params[:game_id])
   @deck = @game.deck
   @card = @game.current_card
-  if @deck.cards[@game.current_card.id + 1]
+  if @deck.cards[@game.current_card.id]
     @game.deck_position += 1
     @game.cards_skipped += 1
     @game.save
-    redirect "/#{@game.user.username}/games/#{@game.id}"
+    redirect "/games/#{@game.id}"
   else
-    redirect "/decks/congratulations"
+    redirect "/games/#{@game.id}/congratulations"
   end
 end

@@ -1,9 +1,14 @@
 <div class="container">
   <h1>Questions for the deck: <%= @deck.title %></h1>
 
-  <a href="/:username/games/:game_id">Continue Game</a>
+<!--   Need to find a way to change game_id to the Id of the desired game. -->
+  <a href="/games/:game_id">Continue Game</a>
   <br><br>
-  <a href="/games/new">Start New Game</a>
+  <form action="/cards/show_cards" method="POST">
+    <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+    <input type="hidden" name="deck_title" value="<%= @deck.title %>">
+    <input type="submit" value="Start New Game">
+  </form>
 
   <ul>
     <% @deck.cards.each do |card| %>

@@ -4,14 +4,11 @@
   <p>Cards Skipped: <%= @game.cards_skipped %></p>
   <h2><%= @card.question %></h2>
 
-  <form action="/<%= @game.user.username %>/games/<%= @game.id %>" method="POST">
+  <form action="/games/<%= @game.id %>" method="POST">
     <input type="text" name="answer" placeholder="Your Answer">
     <input type="submit">
   </form>
 
-  <p><%=   @game.deck_position %></p>
-
-
-  <a href="/<%= @game.user.username %>/games/<%= @game.id %>/answer"><input type="submit" value="Flip"></a>
-  <a href="/<%= @game.user.username %>/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
+  <a href="/games/<%= @game.id %>/answer"><input type="submit" value="Flip"></a>
+  <a href="/games/<%= @game.id %>/skip"><input type="submit" value="Skip"></a>
 </div>
