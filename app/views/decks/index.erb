@@ -6,6 +6,15 @@
   <hr>
   <h1>Choose Your Destiny</h1>
 
+  <!-- Continue Game -->
+    <p><%= "No games to continue. Start a new game!" if @no_continue %></p>
+    <form action="/games/continue" method="POST">
+      <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+      <input type="submit" value="Continue Game">
+    </form>
+
+    <br>
+
   <% @decks.each do |deck| %>
   <ul>
     <li><a href="/decks/<%= deck.title %>/cards"><%= deck.title %></a></li>

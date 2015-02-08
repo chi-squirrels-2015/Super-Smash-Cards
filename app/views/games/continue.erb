@@ -5,12 +5,12 @@
   <hr>
 <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
   <h1>Which game would you like to continue?</h1>
-  <% @games.sort.each do |game| %>
-    <a href="/games/<%= game.id %>"><h2>Game Number: <%= game.id %></h2></a>
+  <% @games.sort.each_with_index do |game, index| %>
+    <a href="/games/<%= game.id %>"><h2>Game Number: <%= index + 1 %> <%= game.deck.title %></h2></a>
     <h3>Stats:</h3>
     <p>Cards Completed: <%= game.cards_completed %></p>
     <p>Cards Skipped: <%= game.cards_skipped %></p>
-    <p>Cards total in deck: <%= @deck.cards.length %></p>
+    <p>Cards total in deck: <%= game.deck.cards.length %></p>
     <hr>
   <% end %>
 

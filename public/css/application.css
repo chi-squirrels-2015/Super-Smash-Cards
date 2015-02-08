@@ -79,6 +79,10 @@ th {
   color: black;
 }
 
+.decks_container form input {
+  color: black;
+}
+
 .decks_container a {
   color: white;
 }

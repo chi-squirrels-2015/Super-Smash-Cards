@@ -11,16 +11,6 @@
     <% end %>
   </ul>
 
-<!-- Continue Game -->
-  <p><%= "No games to continue. Start a new game!" if @no_continue %></p>
-  <form action="/games/continue/<%= @deck.title %>" method="POST">
-    <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
-    <input type="hidden" name="deck_title" value="<%= @deck.title %>">
-    <input type="submit" value="Continue Game">
-  </form>
-
-  <br>
-
 <!-- Start New Game -->
   <form action="/games/new_game" method="POST">
     <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
@@ -28,5 +18,7 @@
     <input type="submit" value="Start New Game">
   </form>
   <br>
+
+  <button type="submit"><a href="/decks">Back to Decks</a></button>
 
 </div>
