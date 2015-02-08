@@ -1,5 +1,6 @@
 <div class="container">
 <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+  <p>Welcome, <%= User.find(session[:user_id]).username %>.</p>
   <h1>Choose Your Destiny</h1>
 
   <% @decks.each do |deck| %>
