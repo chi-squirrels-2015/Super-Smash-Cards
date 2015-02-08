@@ -1,24 +1,38 @@
-post "/cards/show_cards" do
+post "/games/new_game" do
   if session[:user_id]
-    user = User.find(session[:user_id])
-    deck = Deck.find_by(title: params[:deck_title])
-    new_game = Game.create!(user_id: user.id, deck_id: deck.id)
-    @game = Game.find(new_game.id)
-    @deck = @game.deck
-    @card = @game.current_card
-    erb :"cards/show_question"
+    @user = User.find(session[:user_id])
+    @deck = Deck.find_by(title: params[:deck_title])
+    # Creates a new game for the user by using method that is at the bottom of code
+    create_new_game(@user, @deck)
+  else
+    session.clear
+    redirect "/login"
   end
 end
 
-# post "/:username/games" do
-#   "gets info from the decks/index.erb to find out if the game has already been made or needs to be made"
-#   Game.create(params[:game])
-# end
+post "/games/continue/:deck_title" do
+  @deck = Deck.find_by(title: params[:deck_title])
+  if session[:user_id]
+    # Checks if there is a game that can be continued from the user that is logged in, otherwise show them the same page that shows all cards of deck.
+    if Game.where(user_id: session[:user_id]).length == 0
+      @no_continue = true
+      return erb :"cards/show_cards"
+    else
+      @user = User.find(session[:user_id])
+      @games = Game.where(user_id: session[:user_id])
+      erb :"games/continue"
+    end
+  else
+    session.clear
+    redirect "/login"
+  end
+end
 
 get "/games/:game_id/congratulations" do
   if session[:user_id]
     @user = User.find(session[:user_id])
     @game = Game.find(params[:game_id])
+    @deck = @game.deck
     erb :"decks/congrats"
   else
     session.clear
@@ -30,7 +44,11 @@ get "/games/:game_id" do
   @game = Game.find(params[:game_id])
   @deck = @game.deck
   @card = @game.current_card
-  erb :"cards/show_question"
+  if @game.cards_completed + @game.cards_skipped == @game.cards.length
+    redirect "/games/#{params[:game_id]}/congratulations"
+  else
+    erb :"cards/show_question"
+  end
 end
 
 get "/games/:game_id/answer" do
@@ -51,12 +69,10 @@ post "/games/:game_id" do
       @game.save
       redirect "/games/#{@game.id}"
     else
-      @game.deck_position = 0
-      @game.cards_completed = 0
-      @game.cards_skipped = 0
-       # Testing purposes, but need to implement somehow. Remove this line and after until the redirect.
+      @game.deck_position += 1
+      @game.cards_completed += 1
       @game.save
-      redirect "/games/#{@game.id}/congratulations" #Why are we redirecting to congrats here?
+      redirect "/games/#{@game.id}/congratulations"
     end
   else
     @wrong = true
@@ -74,6 +90,17 @@ get "/games/:game_id/skip" do
     @game.save
     redirect "/games/#{@game.id}"
   else
+    @game.deck_position += 1
+    @game.cards_skipped += 1
+    @game.save
     redirect "/games/#{@game.id}/congratulations"
   end
 end
+
+def create_new_game(user, deck)
+  new_game = Game.create!(user_id: user.id, deck_id: deck.id)
+    @game = Game.find(new_game.id)
+    @deck = @game.deck
+    @card = @game.current_card
+    redirect "/games/#{@game.id}"
+  end
