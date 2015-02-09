@@ -1,10 +1,13 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="form_container">
   <h1>Create a new login here dawg.</h1>
-  <a href="/users">Home</a>
   <p>Put info here:</p>
   <form action="/users/signup" method="POST">
     <input type="text" placeholder="Username" name="user[username]">
     <input type="password" placeholder="Password" name="user[password]">
     <input type="submit" value="Submit">
   </form>
+  <br>
+  <button type="submit"><a href="/users">Home</a></button>
 </div>

@@ -1,6 +1,9 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="decks_container">
 <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
-  <p>Welcome, <%= User.find(session[:user_id]).username %>.</p>
+  <p>Welcome, <%= User.find(session[:user_id]).username %>. <button type="submit"><a href="/users">Log Out</a></button></p>
+  <hr>
   <h1>Choose Your Destiny</h1>
 
   <!-- Continue Game -->
@@ -13,9 +16,10 @@
     <br>
 
   <% @decks.each do |deck| %>
-    <p><a href="/decks/<%= deck.title %>/cards"><%= deck.title %></a></p>
+  <ul>
+    <li><a href="/decks/<%= deck.title %>/cards"><%= deck.title %></a></li>
+  </ul>
   <% end %>
 
-  <button type="submit"><a href="/users">Log Out</a></button>
 
 </div>

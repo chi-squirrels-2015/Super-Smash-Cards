@@ -1,4 +1,8 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="continue_games_container">
+  <p>Welcome, <%= User.find(session[:user_id]).username %>. <button type="submit"><a href="/users">Log Out</a></button></p>
+  <hr>
 <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
   <h1>Which game would you like to continue?</h1>
   <% @games.sort.each_with_index do |game, index| %>
@@ -7,10 +11,10 @@
     <p>Cards Completed: <%= game.cards_completed %></p>
     <p>Cards Skipped: <%= game.cards_skipped %></p>
     <p>Cards total in deck: <%= game.deck.cards.length %></p>
+    <hr>
   <% end %>
 
-  <br><hr>
+  <br>
 
   <button type="submit"><a href="/decks">Back to Decks</a></button>
-  <button type="submit"><a href="/users">Log Out</a></button>
 </div>

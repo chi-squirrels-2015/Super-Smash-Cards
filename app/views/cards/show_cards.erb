@@ -1,7 +1,15 @@
-<div class="container">
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<div class="all_cards_container">
+  <p>Welcome, <%= User.find(session[:user_id]).username %>. <button type="submit"><a href="/users">Log Out</a></button></p>
+  <hr>
   <h1>Questions for the deck: <%= @deck.title %></h1>
 
-
+  <ul>
+    <% @deck.cards.each do |card| %>
+      <li><%= card.question %></li>
+    <% end %>
+  </ul>
 
 <!-- Start New Game -->
   <form action="/games/new_game" method="POST">
@@ -10,12 +18,7 @@
     <input type="submit" value="Start New Game">
   </form>
   <br>
-  <button type="submit"><a href="/users">Log Out</a></button>
 
-  <ul>
-    <% @deck.cards.each do |card| %>
-      <li><%= card.question %></li>
-    <% end %>
-  </ul>
+  <button type="submit"><a href="/decks">Back to Decks</a></button>
 
 </div>
